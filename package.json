@@ -8,8 +8,9 @@
     "lint": "eslint src --ignore-path .eslintignore --ext .ts",
     "lint:fix": "npm run lint --fix",
     "tsc:start": "tsc -w",
+    "start": "node ./dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only ./dist/server.js",
-    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)"
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },
   "keywords": [],
   "author": "",

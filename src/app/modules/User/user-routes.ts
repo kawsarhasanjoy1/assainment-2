@@ -1,7 +1,8 @@
-import { Router } from "express";
+// import { Router } from "express";
 import { userController } from "./user-controller";
+import express from "express";
 
-const userRouter = Router();
+const userRouter = express.Router();
 
 userRouter.post("/users", userController.createUser);
 userRouter.get("/users", userController.getAllUser);
