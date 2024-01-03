@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ignore-path .eslintignore --ext .ts",
     "lint:fix": "npm run lint --fix",
-    "tsc:start": "tsc -w",
+    "build": "tsc -w",
     "start": "node ./dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only ./dist/server.js",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
@@ -24,7 +24,8 @@
     "joi": "^17.11.0",
     "mongoose": "^8.0.1",
     "nodemon": "^3.0.1",
-    "typescript": "5.2.x"
+    "typescript": "5.2.x",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

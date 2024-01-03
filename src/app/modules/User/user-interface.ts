@@ -5,7 +5,7 @@ interface Order {
 }
 
 interface user {
-  userId: string;
+  userId: number;
   username: string;
   password: string;
   fullName: {
@@ -21,7 +21,7 @@ interface user {
     city: string;
     country: string;
   };
-  Order?: Order[];
+  orders?: Order[];
 }
 
 export { user };

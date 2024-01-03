@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { user } from "./user-interface";
 import User from "./user-model";
+import userValidation from "./zod-validation";
 
-const createUser = async (userData: user): Promise<user> => {
-  const result = await User.create(userData);
+const createUser = async (userData: Partial<user>) => {
+  const user = userValidation.parse(userData);
+  const result = await User.create(user);
   return result;
 };
 const getAllUser = async (): Promise<user[]> => {
@@ -25,7 +28,7 @@ const updatedSingleUser = async (
 };
 const deleteSingleUser = async (id: string): Promise<user | null> => {
   const result = await User.findByIdAndDelete(id);
-  return result;
+  return null;
 };
 
 // creating order
@@ -35,13 +38,13 @@ const userUpOrder = async (id: string, upOrder: any) => {
   if (!userOrder) {
     throw new Error("user not found");
   }
-  if (!userOrder.Order) {
-    userOrder.Order = [];
+  if (!userOrder.orders) {
+    userOrder.orders = [];
   } else {
-    userOrder.Order.push(upOrder);
+    userOrder.orders.push(upOrder);
     const result = await User.findByIdAndUpdate(
       id,
-      { $set: { Order: userOrder.Order } },
+      { $set: { orders: userOrder.orders } },
       { new: true, runValidators: true }
     );
     return result;
